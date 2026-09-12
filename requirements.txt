@@ -1,0 +1,24 @@
+# ============================================================
+# ECG-MPI-Inference requirements (Python >= 3.11)
+# ============================================================
+
+# MPI binding for Python (needs an MPI runtime:
+#   Windows -> Microsoft MPI / MS-MPI (mpiexec)
+#   Linux   -> OpenMPI / MPICH  (mpiexec)
+mpi4py>=4.0.0
+
+# WFDB reader used to load the Chapman ECG records (.hea/.mat)
+wfdb>=4.3.0
+
+# ECG Edge AI Engine dependencies (identical to ecg-edge-ai-engine/requirements.txt)
+numpy==2.4.6
+scipy==1.17.1
+PyWavelets==1.9.0
+pandas==2.3.3
+matplotlib==3.11.0
+
+# TFLite backend required by the engine's model loader:
+#   - Windows / macOS (development): tensorflow
+#   - Linux / Raspberry Pi (edge):   tflite-runtime
+tensorflow>=2.21.0
+# tflite-runtime==2.21.0
