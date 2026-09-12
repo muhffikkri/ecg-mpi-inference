@@ -1,0 +1,11 @@
+# keras==3.14.1
+# tensorflow==2.21.0
+numpy==2.4.6
+pandas==2.3.3
+scipy==1.17.1
+matplotlib==3.11.0
+PyWavelets==1.9.0
+# fastapi 
+# uvicorn 
+# wfdb==4.3.1
+tflite-runtime==2.21.0
