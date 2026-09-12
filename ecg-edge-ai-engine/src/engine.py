@@ -87,7 +87,15 @@ class ECGEngine:
             # 5. Postprocessing
             logger.info("Starting postprocessing.")
             labels = metadata.get("labels", cfg.DEFAULT_CLASSES)
-            threshold = float(metadata.get("threshold", cfg.DEFAULT_THRESHOLD))
+            threshold_cfg = metadata.get("threshold", cfg.DEFAULT_THRESHOLD)
+            # metadata.json may define a per-class threshold list (multi-label
+            # models); the postprocessor only supports a single scalar, so use
+            # the strictest threshold when a list is provided.
+            threshold = (
+                max(float(t) for t in threshold_cfg)
+                if isinstance(threshold_cfg, (list, tuple))
+                else float(threshold_cfg)
+            )
             
             result = postprocess_prediction(
                 probabilities=raw_probabilities,
